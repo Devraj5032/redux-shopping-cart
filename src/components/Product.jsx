@@ -6,11 +6,11 @@ const Product = ({product , addToCart}) => {
 
   return (
     <div className="card" style={{width: "18rem"}}>
-      <img src={product.image} className="card-img-top" alt="..." />
+      <img src={product.image} className="card-img-top" alt="..." height='300px'/>
       <div className="card-body">
         <h5 className="card-title">{product.title}</h5>
         <p className="card-text">
-         {product.description}
+         {product.description.slice(0,75)}
         </p>
         <button className="btn btn-primary" onClick={() => {addToCart(product)}}>
           Add to Cart

@@ -14,3 +14,8 @@ export const increaseQuantity = (index) => ({
     type: 'INCREASE_COUNT' ,
     payload: index
 })
+
+export const decreaseQuantity = (index) => ({
+    type: 'DECREASE_COUNT' ,
+    payload: index
+})

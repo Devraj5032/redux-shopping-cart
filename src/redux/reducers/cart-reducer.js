@@ -9,7 +9,15 @@ export const cartReducer = (state = cart , action , quantity = count ) => {
     }
     else if (action.type === 'INCREASE_COUNT') {
         console.log(cart);
-        return cart[action.payload].quantity += 1
+        const index = action.payload
+        cart[index].quantity += 1
+        return [...cart]
+    }
+    else if (action.type === 'DECREASE_COUNT') {
+        console.log(cart);
+        const index = action.payload
+        cart[index].quantity -= 1
+        return [...cart]
     }
      else {
         return state

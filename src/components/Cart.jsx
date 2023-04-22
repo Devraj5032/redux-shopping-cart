@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { increaseQuantity } from "../redux/actions/cart";
+import { increaseQuantity , decreaseQuantity} from "../redux/actions/cart";
 
-const Cart = ({ cart , increaseQuantity}) => {
+const Cart = ({ cart , increaseQuantity , decreaseQuantity}) => {
 
   const [newCart , setNewCart] = useState([])
 
@@ -11,7 +11,8 @@ const Cart = ({ cart , increaseQuantity}) => {
   } , [cart])
 
   return (
-    <div>
+    <div style={{position: 'relative'}}>
+      <div style={{position: 'absolute' , color: 'white' , backgroundColor: 'red' , right: 0 , top: -5 , padding: '6px 12px' , borderRadius: '30%'}}>{cart.length}</div>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -87,7 +88,7 @@ const Cart = ({ cart , increaseQuantity}) => {
                             +
                           </button>
                           <button className="btn btn-primary">{prod.quantity}</button>
-                          <button type="button" className="btn btn-primary" >
+                          <button type="button" className="btn btn-primary" onClick={() => {decreaseQuantity(index)}}>
                             -
                           </button>
                         </div>
@@ -121,7 +122,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  increaseQuantity: (index) => (dispatch(increaseQuantity(index)))
+  increaseQuantity: (index) => (dispatch(increaseQuantity(index))) ,
+  decreaseQuantity: (index) => (dispatch(decreaseQuantity(index)))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart);

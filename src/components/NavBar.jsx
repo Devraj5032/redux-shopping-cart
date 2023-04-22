@@ -1,4 +1,3 @@
-// import React, { useEffect, useState } from "react";
 import Cart from "./Cart";
 
 const NavBar = () => {
